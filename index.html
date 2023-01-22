@@ -5,258 +5,231 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item List</title>
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'>
 
     <style>
-      *{
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Fira sans', sans-serif;
+
+.card {
+    box-shadow: 0px 0px 3px 1px #ddd;
 }
 
-body{
+.list-group-item {
+    padding: .5rem .75rem;
+    border: 1px solid rgba(0, 0, 0, .07);
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: linear-gradient(to right top, #da99e5, #dfa0e7, #e3a6e8, #e7adea, #ebb4ec, #dbbff7, #ccc8fe, #c1d1ff, #a7ddff, #9de6f5, #a7ece2, #c0eecf);
-    color: wheat;
+    align-items: center;
 }
 
-header{
-    padding: 2rem 1rem;
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
+.list-group-item:first-child {
+    border-radius: 0;
 }
 
-header h1{
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: black;
-    margin-bottom: 1rem;
+.list-group-item:last-child {
+    border-radius: 0;
 }
 
-#new-task{
-    display: flex;
-    flex-direction: column;
-}
-
-input, button{
-    appearance: none;
-    border: none;
-    outline: none;
-    background-color: none;
-}
-
-#new-task-input{
-    flex: 1 0 0;
-    background-color: whitesmoke;
-    padding: 1rem;
-    border-radius: 1rem;
-    font-size: 1.25rem;
-}
-
-#new-task-input::placeholder{
-    color: grey;
-}
-
-#new-task-submit{
-    color: black;
-    font-size: 1.25rem;
-    font-weight: 700;
+.list-group-item i.fa-square {
+    flex-grow: 0;
     cursor: pointer;
-    transition: 0.4s;
-    margin-left: 1rem;
-    padding: 20px;
-    border-radius: 30px;
-    background-image: linear-gradient(to right top, #9ed8f3, #a5d5fb, #b2d1ff, #c4cbff, #d7c5fc, #e0c3f8, #e8c0f3, #f0beee, #f0bfed, #efbfec, #efc0ec, #eec0eb);
+    order: 1;
 }
 
-#new-task-submit:hover{
-    opacity: 0.8;
+.list-group-item i.fa-check-square {
+    display: none;
 }
 
-#new-task-submit:active{
-    opacity: 0.6;
+.list-group-item i.fa-trash-alt {
+    flex-grow: 0;
+    cursor: pointer;
+    color: #dc3545;
+    order: 3;
 }
 
-main{
-    flex: 1 1 0%;
-    padding: 2rem 1rem;
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
+.list-group-item i.fa-trash-alt:hover {
+    color: #af1e2c;
 }
 
-
-
-.task-list{
-    padding: 1rem;
+.list-group-item .todo-text {
+    flex-grow: 1;
+    margin: 0 10px;
+    order: 2;
 }
 
-.task-list h2{
-    font-size: 2rem;
-    font-weight: 300;
-    color: black;
-    margin-bottom: 1rem;
-}
-
-
-#tasks .task{
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-}
-
-#tasks .task .content .text{
-    padding: 15px;
-    color: black;
-    font-size: 1.125rem;
-    width: 100%;
+.list-group-item.done i.fa-check-square {
+    flex-grow: 0;
+    cursor: pointer;
+    color: #28a745;
     display: block;
-    transition: 0.4s;
 }
 
-#tasks .task .content .text:not(:read-only){
-    color: pink;
+.list-group-item.done i.fa-square {
+    display: none;
 }
 
-#tasks .task .actions{
-    display: flex;
-    margin: 0 -0.5rem;
-}
-
-.task .actions button{
-    cursor: pointer;
-    margin: 0 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.4s;
-}
-
-.task .actions button:hover{
-    opacity: 0.8;
-}
-
-.task .actions button:active{
-    opacity: 0.6;
-}
-
-.task .actions .edit{
-    background-image: linear-gradient(to right top, #da99e5, #dfa0e7, #e3a6e8, #e7adea, #ebb4ec, #dbbff7, #ccc8fe, #c1d1ff, #a7ddff, #9de6f5, #a7ece2, #c0eecf);
-}
-
-.task .actions .delete{
-    background-image: linear-gradient(to right top, #da99e5, #dfa0e7, #e3a6e8, #e7adea, #ebb4ec, #dbbff7, #ccc8fe, #c1d1ff, #a7ddff, #9de6f5, #a7ece2, #c0eecf);
-}
-
-@media only screen and (min-width: 500px)  {
-    #new-task{
-        flex-direction: row;
-    }
+.list-group-item.done .todo-text {
+    text-decoration: line-through;
+    color: #888;
 }
 
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Item List</h1>
-        <form id="new-task">
-            <input type="text" class="text" id="new-task-input" placeholder="What do you have planned?" />
-            <input type="submit" id="new-task-submit" value="Add Task" />
-        </form>
-    </header>
-
-    <main>
-        <section class="task-list">
-            <h2>Task</h2>
-
-            <div id="tasks">
-                <!--
-                    <div class="task">
-                    <div class="content">
-                        <input type="text" class="text" value="My shiny task" readonly>
-                    </div>
-                    <div class="actions">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </div>
-                </div>
-                -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-6 col-sm-8 mx-auto">
+        <div class="card my-5">
+          <h5 class="card-header bg-primary text-white">
+            Todo List
+          </h5>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <input type="text" id="search" class="form-control" placeholder="Search todo">
+              <div class="input-group-append">
+                <span class="input-group-text"> <i class="fas fa-search"></i> </span>
+              </div>
             </div>
-        </section>
-    </main>
+            <ul class="list-group mb-3">
+              <li class="list-group-item">
+                <i class="far fa-square done-icon"></i>
+                <i class="far fa-check-square done-icon"></i>
+                <span class="todo-text">It's a dummy todo item</span>
+                <i class="far fa-trash-alt"></i>
+              </li>
+              <li class="list-group-item done">
+                <i class="far fa-square done-icon"></i>
+                <i class="far fa-check-square done-icon"></i>
+                <span class="todo-text">This task is complete</span>
+                <i class="far fa-trash-alt"></i>
+              </li>
+              <li class="list-group-item">
+                <i class="far fa-square done-icon"></i>
+                <i class="far fa-check-square done-icon"></i>
+                <span class="todo-text">Here is another item</span>
+                <i class="far fa-trash-alt"></i>
+              </li>
+            </ul>
+            <button id="clearBtn" type="button" class="btn btn-dark btn-sm">Clear All</button>
+          </div>
+          <div class="card-footer">
+            <form id="form">
+              <div class="input-group">
+                <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
 
-//donemy changes
+
 
     <script>
-      window.addEventListener('load', () => {
-	const form = document.querySelector("#new-task");
-	const input = document.querySelector("#new-task-input");
-	const list_el = document.querySelector("#tasks");
 
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
+      // Define all UI variable
+const todoList = document.querySelector('.list-group');
+const form = document.querySelector('#form');
+const todoInput = document.querySelector('#todo');
+const clearBtn = document.querySelector('#clearBtn');
+const search = document.querySelector('#search');
 
-		const task = input.value;
+// Load all event listners
+allEventListners();
 
-		const task_el = document.createElement('div');
-		task_el.classList.add('task');
 
-		const task_content_el = document.createElement('div');
-		task_content_el.classList.add('content');
+// Functions of all event listners
+function allEventListners() {
+    // Add todo event
+    form.addEventListener('submit', addTodo);
+    // Remove and complete todo event
+    todoList.addEventListener('click', removeTodo);
+    // Clear or remove all todos
+    clearBtn.addEventListener('click', clearTodoList);
+    // Search todo event
+    search.addEventListener('keyup', searchTodo);
+}
 
-		task_el.appendChild(task_content_el);
 
-		const task_input_el = document.createElement('input');
-		task_input_el.classList.add('text');
-		task_input_el.type = 'text';
-		task_input_el.value = task;
-		task_input_el.setAttribute('readonly', 'readonly');
+// Add todo item function
+function addTodo(e) {
+    if (todoInput.value !== '') {
+        // Create li element
+        const li = document.createElement('li');
+        // Add class
+        li.className = 'list-group-item';
+        // Add complete and remove icon
+        li.innerHTML = `<i class="far fa-square done-icon"></i>
+                        <i class="far fa-check-square done-icon"></i>
+                        <i class="far fa-trash-alt"></i>`;
+        // Create span element
+        const span = document.createElement('span');
+        // Add class
+        span.className = 'todo-text';
+        // Create text node and append to span
+        span.appendChild(document.createTextNode(todoInput.value));
+        // Append span to li
+        li.appendChild(span);
+        // Append li to ul (todoList)
+        todoList.appendChild(li);
 
-		task_content_el.appendChild(task_input_el);
+        // Clear input
+        todoInput.value = '';
+    } else {
+        alert('Please add todo');
+    }
 
-		const task_actions_el = document.createElement('div');
-		task_actions_el.classList.add('actions');
-		
-		const task_edit_el = document.createElement('button');
-		task_edit_el.classList.add('edit');
-		task_edit_el.innerText = 'Edit';
+    e.preventDefault();
+}
 
-		const task_delete_el = document.createElement('button');
-		task_delete_el.classList.add('delete');
-		task_delete_el.innerText = 'Delete';
 
-		task_actions_el.appendChild(task_edit_el);
-		task_actions_el.appendChild(task_delete_el);
+// Remove and complete todo item function
+function removeTodo(e) {
+    // Remove todo
+    if (e.target.classList.contains('fa-trash-alt')) {
+        if (confirm('Are you sure')) {
+            e.target.parentElement.remove();
+        }
+    }
 
-		task_el.appendChild(task_actions_el);
+    // Complete todo
+    if (e.target.classList.contains('todo-text')) {
+        e.target.parentElement.classList.toggle('done');
+    }
+    if (e.target.classList.contains('done-icon')) {
+        e.target.parentElement.classList.toggle('done');
+    }
+}
 
-		list_el.appendChild(task_el);
 
-		input.value = '';
+// Clear or remove all todos function
+function clearTodoList() {
+    todoList.innerHTML = '';
+}
 
-		task_edit_el.addEventListener('click', (e) => {
-			if (task_edit_el.innerText.toLowerCase() == "edit") {
-				task_edit_el.innerText = "Save";
-				task_input_el.removeAttribute("readonly");
-				task_input_el.focus();
-			} else {
-				task_edit_el.innerText = "Edit";
-				task_input_el.setAttribute("readonly", "readonly");
-			}
-		});
 
-		task_delete_el.addEventListener('click', (e) => {
-			list_el.removeChild(task_el);
-		});
-	});
-});
-      
+// Search todo function
+function searchTodo(e) {
+    const text = e.target.value.toLowerCase();
+    const allItem = document.querySelectorAll('.list-group-item');
+    for (let task of allItem) {
+        const item = task.textContent;
+        if (item.toLowerCase().indexOf(text) != -1) {
+            task.style.display = 'flex';
+        } else {
+            task.style.display = 'none';
+        }
+    };
+}
+
+
     </script>
 </body>
 </html>
