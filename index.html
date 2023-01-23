@@ -4,232 +4,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item List</title>
-    <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
-    <!-- Font Awesome CSS -->
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'>
+    <title>Registration Form</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+        .d-flex{
+            flex-direction: row;
+        }
 
-.card {
-    box-shadow: 0px 0px 3px 1px #ddd;
+        @media (max-width: 900px) {
+            .d-flex {
+                flex-direction: column;
+            }
 }
-
-.list-group-item {
-    padding: .5rem .75rem;
-    border: 1px solid rgba(0, 0, 0, .07);
-    display: flex;
-    align-items: center;
-}
-
-.list-group-item:first-child {
-    border-radius: 0;
-}
-
-.list-group-item:last-child {
-    border-radius: 0;
-}
-
-.list-group-item i.fa-square {
-    flex-grow: 0;
-    cursor: pointer;
-    order: 1;
-}
-
-.list-group-item i.fa-check-square {
-    display: none;
-}
-
-.list-group-item i.fa-trash-alt {
-    flex-grow: 0;
-    cursor: pointer;
-    color: #dc3545;
-    order: 3;
-}
-
-.list-group-item i.fa-trash-alt:hover {
-    color: #af1e2c;
-}
-
-.list-group-item .todo-text {
-    flex-grow: 1;
-    margin: 0 10px;
-    order: 2;
-}
-
-.list-group-item.done i.fa-check-square {
-    flex-grow: 0;
-    cursor: pointer;
-    color: #28a745;
-    display: block;
-}
-
-.list-group-item.done i.fa-square {
-    display: none;
-}
-
-.list-group-item.done .todo-text {
-    text-decoration: line-through;
-    color: #888;
-}
-
     </style>
 </head>
-<body>
+<body background="img/bg.jpg" style="background-size: cover;">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-5 col-md-6 col-sm-8 mx-auto">
-        <div class="card my-5">
-          <h5 class="card-header bg-primary text-white">
-            Todo List
-          </h5>
-          <div class="card-body">
-            <div class="input-group mb-3">
-              <input type="text" id="search" class="form-control" placeholder="Search todo">
-              <div class="input-group-append">
-                <span class="input-group-text"> <i class="fas fa-search"></i> </span>
-              </div>
-            </div>
-            <ul class="list-group mb-3">
-              <li class="list-group-item">
-                <i class="far fa-square done-icon"></i>
-                <i class="far fa-check-square done-icon"></i>
-                <span class="todo-text">It's a dummy todo item</span>
-                <i class="far fa-trash-alt"></i>
-              </li>
-              <li class="list-group-item done">
-                <i class="far fa-square done-icon"></i>
-                <i class="far fa-check-square done-icon"></i>
-                <span class="todo-text">This task is complete</span>
-                <i class="far fa-trash-alt"></i>
-              </li>
-              <li class="list-group-item">
-                <i class="far fa-square done-icon"></i>
-                <i class="far fa-check-square done-icon"></i>
-                <span class="todo-text">Here is another item</span>
-                <i class="far fa-trash-alt"></i>
-              </li>
-            </ul>
-            <button id="clearBtn" type="button" class="btn btn-dark btn-sm">Clear All</button>
-          </div>
-          <div class="card-footer">
-            <form id="form">
-              <div class="input-group">
-                <input type="text" class="form-control" id="todo" placeholder="Add new todo item">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add
-                  </button>
+
+          <div class="container-fluid w-100" style="height: 100px;">
+            <div class="d-flex">
+                <div class="pr-5 pt-2 pl-2 mr-5">
+                    <img src="img/lo.png" alt="" class="rounded-circle" >
                 </div>
-              </div>
-            </form>
+                <div class="p-5 mx-auto">
+                    <h3 style="line-height: 1px; text-align: center; margin-top: 20px; font-size: 60px; color: rgb(214, 214, 214);">Call</h3>
+                    <h3 style="line-height: 1px; text-align: center; margin-top: -4px; font-size: 15px;">Book a Call</h3>
+
+                    <p class="text-center mt-5">Book a call slot and our representative will call you within 1hr of selected time.</p>
+                    <hr style="width: 100%; border: 2px solid rgb(214, 214, 214);">
+
+                    <form action="" >
+                        <div class="form-group">
+                            <label for="name" class="font-weight-bold">Name: </label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter-name" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="font-weight-bold">Email: </label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter-email" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="font-weight-bold">Phone: </label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter-phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time" class="font-weight-bold">Time for Call: </label>
+                            <div style="display: flex;">
+                                <input type="date" class="form-control w-50 mr-2 p-2" id="date" placeholder="Enter-date" name="date">
+                                <input type="time" class="form-control w-50" id="time" placeholder="Enter time" name="time">
+                            </div>
+                        </div>
+
+                        <button type="submit" style="width: 100%;" class="font-weight-bold" onclick="test()">GET A CALL</button>
+                    </form>
+                </div>
+                <div class="p-2">
+                    <button type="submit" class="mb-2">Schedule a Call</button>
+                    <button type="submit">Hire with us</button>
+                </div>
+            </div>
+
           </div>
-        </div>
-      </div>
-    </div>
-  </div>  
 
 
+          <script src="script.js">
+    function test(){
+    var uid = document.getElementById("name").value;
+    var em = document.getElementById("email").value;
+    var tel = document.getElementById("phone").value;
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
 
-    <script>
+    //storing data
+    var user = localStorage.setItem("uid", uid);
+    var mail = localStorage.setItem("em", em);
+    var ph = localStorage.setItem("tel", tel);
+    var da = localStorage.setItem("date", date);
+    var tim = localStorage.setItem("time", time);
 
-      // Define all UI variable
-const todoList = document.querySelector('.list-group');
-const form = document.querySelector('#form');
-const todoInput = document.querySelector('#todo');
-const clearBtn = document.querySelector('#clearBtn');
-const search = document.querySelector('#search');
+    //Retrive
+    var user = localStorage.getItem("uid",uid);
+    var mail = localStorage.getItem("em", em);
+    var ph = localStorage.getItem("tel", tel);
+    var da = localStorage.getItem("date", date);
+    var tim = localStorage.getItem("time", time);
 
-// Load all event listners
-allEventListners();
+    // var a,b;
+    // a = document.getElementById("name").value;
+    // b = document.getElementById("password").value;
 
-
-// Functions of all event listners
-function allEventListners() {
-    // Add todo event
-    form.addEventListener('submit', addTodo);
-    // Remove and complete todo event
-    todoList.addEventListener('click', removeTodo);
-    // Clear or remove all todos
-    clearBtn.addEventListener('click', clearTodoList);
-    // Search todo event
-    search.addEventListener('keyup', searchTodo);
-}
-
-
-// Add todo item function
-function addTodo(e) {
-    if (todoInput.value !== '') {
-        // Create li element
-        const li = document.createElement('li');
-        // Add class
-        li.className = 'list-group-item';
-        // Add complete and remove icon
-        li.innerHTML = `<i class="far fa-square done-icon"></i>
-                        <i class="far fa-check-square done-icon"></i>
-                        <i class="far fa-trash-alt"></i>`;
-        // Create span element
-        const span = document.createElement('span');
-        // Add class
-        span.className = 'todo-text';
-        // Create text node and append to span
-        span.appendChild(document.createTextNode(todoInput.value));
-        // Append span to li
-        li.appendChild(span);
-        // Append li to ul (todoList)
-        todoList.appendChild(li);
-
-        // Clear input
-        todoInput.value = '';
-    } else {
-        alert('Please add todo');
+    if(uid==user && em==mail && tel==ph && date==da && time==tim){
+      alert("Login Successfully!");
     }
-
-    e.preventDefault();
-}
-
-
-// Remove and complete todo item function
-function removeTodo(e) {
-    // Remove todo
-    if (e.target.classList.contains('fa-trash-alt')) {
-        if (confirm('Are you sure')) {
-            e.target.parentElement.remove();
-        }
+    else{
+      alert("Invalid Credentials");
     }
-
-    // Complete todo
-    if (e.target.classList.contains('todo-text')) {
-        e.target.parentElement.classList.toggle('done');
-    }
-    if (e.target.classList.contains('done-icon')) {
-        e.target.parentElement.classList.toggle('done');
-    }
-}
-
-
-// Clear or remove all todos function
-function clearTodoList() {
-    todoList.innerHTML = '';
-}
-
-
-// Search todo function
-function searchTodo(e) {
-    const text = e.target.value.toLowerCase();
-    const allItem = document.querySelectorAll('.list-group-item');
-    for (let task of allItem) {
-        const item = task.textContent;
-        if (item.toLowerCase().indexOf(text) != -1) {
-            task.style.display = 'flex';
-        } else {
-            task.style.display = 'none';
-        }
-    };
-}
-
-
+  }
     </script>
+    
 </body>
 </html>
